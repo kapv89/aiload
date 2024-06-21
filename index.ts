@@ -37,7 +37,7 @@ async function main() {
   for (const filePath of allFiles) {
     const fullPath = path.join(repositoryRoot, filePath);
     const content = fs.readFileSync(fullPath, 'utf-8');
-    outputStream.write(`-------------------------------${filePath}\n`);
+    outputStream.write(`-------------------------------filepath:${filePath}\n`);
     outputStream.write(content);
     outputStream.write(`\n-------------------------------EOF\n`);
   }

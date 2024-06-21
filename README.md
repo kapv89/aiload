@@ -1,15 +1,75 @@
 # aiload
 
-To install dependencies:
+## About
+
+This repository contains code to generate a single text file from a codebase containing the full source-code with filepaths and EOF delimiters. This file can be uploaded to [Gemini](https://gemini.google.com/app) with > 1 million token context and the AI can then chat about the codebase.
+
+## Installation
 
 ```bash
-bun install
+# install bun
+curl -fsSL https://bun.sh/install | bash
+
+# clone repo
+git clone git@github.com:kapv89/aiload.git
+
+# cd into repo
+cd aiload
+
+# run build.sh
+./build.sh
+# this generates a binary named `aiload`
+
+# copy `aiload` to a directory in your $PATH
+sudo cp aiload /usr/local/bin
+
 ```
 
-To run:
+## Usage
+Suppose you have a folder named `codebase` which you want to export into a single text file. You need to generate a *patterns* text file for the `codebase` folder so that `aiload` can know what files to export. Patterns file for my unlaunched multiplayer Entity Relation Diagram tool is named `erdtool.patterns` and looks something like this:
+
+`erdtool.pattenrs`
+
+```text
+*.sh
+package.json
+turbo.json
+*.gitignore
+*.dockerignore
+*.Dockerfile
+docker-compose.yml
+
+!runner/node_modules/**/*.*
+runner/**/*.*
+runner/ecosystem.config.js
+runner/package.json
+
+!infra/node_modules/**/*.*
+infra/**/*.*
+
+!apps/api/node_modules/**/*.*
+apps/api/**/*.*
+
+!apps/crdt-wss/node_modules/**/*.*
+apps/crdt-wss/**/*.*
+
+!apps/io/node_modules/**/*.*
+apps/io/**/*.*
+
+!apps/web/node_modules/**/*.*
+apps/web/**/*.*
+
+```
+
+You can run `aiload` using the command:
 
 ```bash
-bun run index.ts
+aiload erdtool.patterns
 ```
 
-This project was created using `bun init` in bun v1.1.13. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+This will generate a file named `output` which will contain the full codebase.
+
+
+### \*
+
+Made using Gemini.
