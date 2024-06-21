@@ -16,6 +16,9 @@ git clone git@github.com:kapv89/aiload.git
 # cd into repo
 cd aiload
 
+# install deps
+bun install
+
 # run build.sh
 ./build.sh
 # this generates a binary named `aiload`
@@ -61,7 +64,9 @@ apps/web/**/*.*
 
 ```
 
-You can run `aiload` using the command:
+Pattenrs file uses [`glob`](https://www.npmjs.com/package/glob) patterns and supports **include** and **exclude** patterns. Exclude patterns start with `!`.
+
+Once you have a patterns file, you can then run `aiload` using the command:
 
 ```bash
 aiload erdtool.patterns
