@@ -29,7 +29,7 @@ sudo cp aiload /usr/local/bin
 ```
 
 ## Usage
-Suppose you have a folder named `codebase` which you want to export into a single text file. You need to generate a *patterns* text file for the `codebase` folder so that `aiload` can know what files to export. Patterns file for my unlaunched multiplayer Entity Relation Diagram tool is named `erdtool.patterns` and looks something like this:
+Suppose you have a folder named `codebase` which you want to export into a single text file. You need to generate a *patterns* text file **in the root of the project** for the `codebase` folder so that `aiload` can know what files to export. Patterns file for my unlaunched multiplayer Entity Relation Diagram tool is named `erdtool.patterns` and looks something like this:
 
 `erdtool.pattenrs`
 
